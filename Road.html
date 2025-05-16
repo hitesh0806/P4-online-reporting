@@ -65,11 +65,13 @@ button:hover {
   <h2>Problem Information</h2>
  
   <label>Location of the street/road:</label>
-  <input id="roadlocation" />
+  <input id="roadlocation">
 
   <h2>Issue with the road</h2>
   <div id="issues">
-  <button id="lackofroad">Lack of road</button>
+  <button id="lackofroad" onclick="function issue(){
+    a='Lack of road';
+  }">Lack of road</button>
   <button id="road-damage" onclick="roaddamage()">Road damage</button>
   <div class="physicaldamages"div>
   <!--button id="pothole">Pothole</button>
@@ -79,31 +81,51 @@ button:hover {
   <div class="otherdamage"></div-->
   </div>
   <label>Description:</label>
-  <textarea id="roaddescription"></textarea>
-
-
- 
-
-
-
+  <textarea id="roaddescription"></textarea><br><br>
+  <button onclick="submit()">Submit</button>
 </body>
 </html>
 
 
   <script>
+    let a='';
   function roaddamage()
    {
     document.querySelector('.physicaldamages').innerHTML=`
-  <button id="pothole">Pothole</button>
-  <button id="obstruction">Physical Obstruction</button>
-  <button id="waterlogging">Waterlogging</button>
-  <button id="roadcracks">Road cracks</button>
+  <button id="pothole" onclick="function issue(){
+    a='Pothole';
+  }>Pothole</button>
+  <button id="obstruction" onclick="function issue(){
+    a='Physical obstruction';
+  }>Physical Obstruction</button>
+  <button id="waterlogging" onclick="function issue(){
+    a='Waterlogging';
+  }>Waterlogging</button>
+  <button id="roadcracks" onclick="function issue(){
+    a='Road cracks';
+  }>Road cracks</button>
   <button id="others"  onclick="other()">Others(specify)</button>
   <div class="otherdamage"></div>`;
    }
    function other()
    {
     document.querySelector('.otherdamage').innerHTML=`<textarea></textarea>`
+   }
+   function submit()
+   {
+    
+    function issue()
+    {
+       a='';
+    }
+    const y=
+    {
+      typeofroad:'',
+      description:a
+    }
+    localStorage.setItem('issues',JSON.stringify(y));
+    console.log(JSON.parse(localStorage.getItem('issues')))
+    //window.location.href="report.html";
    }
       
 

@@ -40,9 +40,9 @@
     </head>
     <body>
         <label>Enter user name</label>
-        <input id="input1"><br><br>
+        <input id="username"><br><br>
         <label>Enter password</label>
-        <input id="input2"><br><br>
+        <input id="password"><br><br>
         <button onclick="submit()">Submit</button><br><br>
         <button onclick="redirect()">Redirect</button><br><br>
     </body>
@@ -50,14 +50,20 @@
     function submit()
     {
 
-       let x;
+       const x=
+       {
+        userame:'',
+        password:'',
+        name:'',
+        contact:'',
+        email:''
+       }
        
-       x= document.getElementById('input1').value;
-       y= document.getElementById('input2').value;
-       y=String(y);
-       localStorage.setItem("username",x);
-       localStorage.setItem("password",y);
-       console.log(localStorage.getItem("password"))
+       x.username= document.getElementById('username').value;
+       x.password= document.getElementById('password').value;
+       x.password=String(x.password);
+       localStorage.setItem("profile",x);
+       console.log(JSON.parse(localStorage.getItem("profile")));
        alert('Submitted succesfully!!');
     
     }

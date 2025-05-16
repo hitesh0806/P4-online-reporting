@@ -66,12 +66,7 @@
         
         function submit()
         {
-            let x =
-        {
-            name:'',
-            contact:'',
-            email:''
-        }  
+        const x = JSON.parse(localStorage.getitem('profile'));
         x.name=String(x.name);
         x.contact=String(x.contact);
         x.email=String(x.email);      
