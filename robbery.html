@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robbery Report Form</title>
+    <style>
+      /* Basic reset and styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f8ff;
+        padding: 40px;
+        color: #003366;
+      }
+
+      h2,
+      h3 {
+        font-size: 2rem;
+        margin-top: 30px;
+        color: #005b96;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #003366;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
+
+      div {
+        margin-top: 30px;
+      }
+
+      button {
+        display: inline-block;
+        background-color: #007acc;
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        margin: 10px 15px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hover effects */
+      button:hover {
+        background-color: #005b96;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 600px) {
+        input,
+        textarea {
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Robbery Report Form</h2>
+
+    <h3>Victim Information</h3>
+    <label for="victimname">Victim Name:</label>
+    <input id="victimname" />
+
+    <label for="victimcontact">Victim Contact:</label>
+    <input id="victimcontact" />
+
+    <label for="victimbranch">Victim Branch:</label>
+    <input id="victimbranch" />
+
+    <h3>Robbery Details</h3>
+    <label for="robberydate">Date of Robbery:</label>
+    <input id="robberydate" type="date" />
+
+    <label for="robberytime">Time of Robbery:</label>
+    <input id="robberytime" type="time" />
+
+    <label for="location">Location:</label>
+    <input id="location" />
+
+    <label for="stolenitems">Stolen Items:</label>
+    <input id="stolenitems" />
+
+    <label for="description">Robbery Description:</label>
+    <textarea id="description"></textarea>
+
+    <h3>Suspect Information</h3>
+    <label for="suspectname">Suspect Name (if known):</label>
+    <input id="suspectname" />
+
+    <label for="suspectdesc">Suspect Description:</label>
+    <textarea id="suspectdesc"></textarea>
+
+    <h3>Witness Information</h3>
+    <label for="witnessname">Witness Name:</label>
+    <input id="witnessname" />
+
+    <label for="witnesscontact">Witness Contact:</label>
+    <input id="witnesscontact" />
+
+    <label for="witnessbranch">Witness Branch:</label>
+    <input id="witnessbranch" />
+
+    <label for="witnessstatement">Witness Statement:</label>
+    <textarea id="witnessstatement"></textarea>
+    
+    <h2>Evidence: Upload Photos or Videos</h2>
+    <input type="file" id="fileInput" multiple accept="image/*,video/*"><br><br>
+
+    <div class="preview" id="previewArea"></div>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <script>
+      function submitForm() {
+        localStorage.setItem('victimName', document.getElementById('victimname').value);
+        localStorage.setItem('victimContact', document.getElementById('victimcontact').value);
+        localStorage.setItem('victimBranch', document.getElementById('victimbranch').value);
+        localStorage.setItem('robberyDate', document.getElementById('robberydate').value);
+        localStorage.setItem('robberyTime', document.getElementById('robberytime').value);
+        localStorage.setItem('location', document.getElementById('location').value);
+        localStorage.setItem('stolenItems', document.getElementById('stolenitems').value);
+        localStorage.setItem('description', document.getElementById('description').value);
+        localStorage.setItem('suspectName', document.getElementById('suspectname').value);
+        localStorage.setItem('suspectDesc', document.getElementById('suspectdesc').value);
+        localStorage.setItem('witnessName', document.getElementById('witnessname').value);
+        localStorage.setItem('witnessContact', document.getElementById('witnesscontact').value);
+        localStorage.setItem('witnessBranch', document.getElementById('witnessbranch').value);
+        localStorage.setItem('witnessStatement', document.getElementById('witnessstatement').value);
+
+        window.location.href = 'report(rob).html';
+      }
+
+      const fileInput = document.getElementById('fileInput');
+      const previewArea = document.getElementById('previewArea');
+
+      fileInput.addEventListener('change', function () {
+        previewArea.innerHTML = ''; // Clear previous previews
+
+        const files = Array.from(fileInput.files);
+        files.forEach(file => {
+          const fileType = file.type;
+
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            const url = e.target.result;
+
+            if (fileType.startsWith('image/')) {
+              const img = document.createElement('img');
+              img.src = url;
+              previewArea.appendChild(img);
+            } else if (fileType.startsWith('video/')) {
+              const video = document.createElement('video');
+              video.src = url;
+              video.controls = true;
+              previewArea.appendChild(video);
+            }
+          };
+
+          reader.readAsDataURL(file);
+        });
+      });
+    </script>
+  </body>
+</html>

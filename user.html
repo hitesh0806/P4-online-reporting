@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        width: 300px;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        height: 60px;
+        resize: vertical;
+    }
+
+    button {
+        margin-top: 15px;
+        margin-right: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+    </head>
+    <body>
+        <h2>Citizen information</h2><br>
+        <label>Enter your name:</label>
+        <input id="name"><br><br>
+        <label>Enter contact number:</label>
+        <input id="contact"><br><br>
+        <label>Enter your Email:</label>
+        <input id="email"><br><br>
+        <label>Enter your location:</label>
+        <textarea id="textarealoc"></textarea><br><br>
+        <button onclick="submit()">submit</button>
+        <button onclick="redirect()">Redirect</button>
+    </body>
+    <script>
+        
+        
+        function submit()
+        {
+            let x =
+        {
+            name:'',
+            contact:'',
+            email:''
+        }  
+        x.name=String(x.name);
+        x.contact=String(x.contact);
+        x.email=String(x.email);      
+        x.name=document.getElementById('name').value;
+        x.contact=document.getElementById('contact').value;
+        x.email=document.getElementById('email').value;
+        console.log(x.name);
+        localStorage.setItem('docs',JSON.stringify(x));
+        console.log(JSON.parse(localStorage.getItem('docs')));
+        }
+        function redirect()
+        {
+            window.location.href="index.html";
+        }
+        
+    </script>
+</html>

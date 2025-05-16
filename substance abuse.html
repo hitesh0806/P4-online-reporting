@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Substance Abuse Reporting</title>
+    <style>
+      /* Basic reset and styling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f0f8ff;
+        padding: 40px;
+        color: #003366;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-top: 30px;
+        color: #005b96;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #003366;
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 10px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      textarea {
+        resize: vertical;
+        height: 100px;
+      }
+
+      div {
+        margin-top: 30px;
+      }
+
+      button {
+        display: inline-block;
+        background-color: #007acc;
+        color: white;
+        border: none;
+        padding: 14px 28px;
+        margin: 10px 15px;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hover effects */
+      button:hover {
+        background-color: #005b96;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Responsive tweaks */
+      @media (max-width: 600px) {
+        input,
+        textarea {
+          width: 100%;
+        }
+
+        button {
+          width: 100%;
+          margin: 10px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Substance Abuse Reporting</h1>
+
+    <h2>Your Information</h2>
+    <label for="yourname6">Enter your name:</label>
+    <input id="yourname6" />
+
+    <label for="yourcontact6">Enter your contact number:</label>
+    <input id="yourcontact6" />
+
+    <label for="youremail6">Enter your E-mail:</label>
+    <input id="youremail6" />
+
+    <label for="youraddress6">Enter your address:</label>
+    <textarea id="youraddress6"></textarea>
+
+    <h2>Substance Abuser Information</h2>
+    <label for="substanceabusername">Name:</label>
+    <input id="substanceabusername" />
+
+    <label for="substanceabusercontact">Contact number:</label>
+    <input id="substanceabusercontact" />
+
+    <label for="substanceabuseremail">E-mail:</label>
+    <input id="substanceabuseremail" />
+
+    <label for="substanceabuseraddress">Address:</label>
+    <textarea id="substanceabuseraddress"></textarea>
+
+    <h2>Case Information</h2>
+    <label for="victimdate6">Date:</label>
+    <input id="victimdate6" />
+
+    <label for="victimlocation6">Location:</label>
+    <input id="victimlocation6" />
+
+    <label for="activityfrequency6">Frequency of activity:</label>
+    <input id="activityfrequency6" />
+
+    <label for="victimdescription6">Describe the type of substance:</label>
+    <textarea id="victimdescription6"></textarea>
+
+    <h2>More Information</h2>
+    <label for="suspectnumberofpeople6">People related to this incident:</label>
+    <input id="suspectnumberofpeople6" />
+
+    <label for="suspectname6">Description of these people:</label>
+    <textarea id="suspectname6"></textarea>
+
+    <h2>Witness Information (If Available)</h2>
+    <label for="witnessname6">Witness Name:</label>
+    <input id="witnessname6" />
+
+    <label for="witnesscontact6">Witness Contact number:</label>
+    <input id="witnesscontact6" />
+
+    <label for="witnessemail6">Witness E-mail:</label>
+    <input id="witnessemail6" />
+
+    <button id="submit">Submit</button>
+    <h2>Evidence: Upload Photos or Videos</h2>
+  <input type="file" id="fileInput" multiple accept="image/*,video/*"><br><br>
+
+  <div class="preview" id="previewArea"></div>
+
+    <script>
+      // Submit button functionality
+      document.getElementById("submit").onclick = function () {
+        localStorage.setItem("yourname6", document.getElementById("yourname6").value);
+        localStorage.setItem("yourcontact6", document.getElementById("yourcontact6").value);
+        localStorage.setItem("youremail6", document.getElementById("youremail6").value);
+        localStorage.setItem("youraddress6", document.getElementById("youraddress6").value);
+
+        localStorage.setItem("substanceabusername", document.getElementById("substanceabusername").value);
+        localStorage.setItem("substanceabusercontact", document.getElementById("substanceabusercontact").value);
+        localStorage.setItem("substanceabuseremail", document.getElementById("substanceabuseremail").value);
+        localStorage.setItem("substanceabuseraddress", document.getElementById("substanceabuseraddress").value);
+
+        localStorage.setItem("victimdate6", document.getElementById("victimdate6").value);
+        localStorage.setItem("victimlocation6", document.getElementById("victimlocation6").value);
+        localStorage.setItem("activityfrequency6", document.getElementById("activityfrequency6").value);
+        localStorage.setItem("victimdescription6", document.getElementById("victimdescription6").value);
+
+        localStorage.setItem("suspectnumberofpeople6", document.getElementById("suspectnumberofpeople6").value);
+        localStorage.setItem("suspectname6", document.getElementById("suspectname6").value);
+
+        localStorage.setItem("witnessname6", document.getElementById("witnessname6").value);
+        localStorage.setItem("witnesscontact6", document.getElementById("witnesscontact6").value);
+        localStorage.setItem("witnessemail6", document.getElementById("witnessemail6").value);
+        
+        window.location.href="report(subabu).html"
+      };
+      const fileInput = document.getElementById('fileInput');
+    const previewArea = document.getElementById('previewArea');
+
+    fileInput.addEventListener('change', function () {
+      previewArea.innerHTML = ''; // Clear previous previews
+
+      const files = Array.from(fileInput.files);
+      files.forEach(file => {
+        const fileType = file.type;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const url = e.target.result;
+
+          if (fileType.startsWith('image/')) {
+            const img = document.createElement('img');
+            img.src = url;
+            previewArea.appendChild(img);
+          } else if (fileType.startsWith('video/')) {
+            const video = document.createElement('video');
+            video.src = url;
+            video.controls = true;
+            previewArea.appendChild(video);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      });
+    });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Road issue Reporting</title>
+  <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fa;
+    padding: 30px;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+#issues, .physicaldamages, .otherdamage {
+    margin-top: 15px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+  </style>
+</head>
+<body>
+
+
+
+  <h2>Problem Information</h2>
+ 
+  <label>Location of the street/road:</label>
+  <input id="roadlocation" />
+
+  <h2>Issue with the road</h2>
+  <div id="issues">
+  <button id="lackofroad">Lack of road</button>
+  <button id="road-damage" onclick="roaddamage()">Road damage</button>
+  <div class="physicaldamages"div>
+  <!--button id="pothole">Pothole</button>
+  <button id="obstruction">Obstruction</button>
+  <button id="waterlogging">Waterlogging</button-->
+  <!--button id="others"  onclick="other()">Others(specify)</button>
+  <div class="otherdamage"></div-->
+  </div>
+  <label>Description:</label>
+  <textarea id="roaddescription"></textarea>
+
+
+ 
+
+
+
+</body>
+</html>
+
+
+  <script>
+  function roaddamage()
+   {
+    document.querySelector('.physicaldamages').innerHTML=`
+  <button id="pothole">Pothole</button>
+  <button id="obstruction">Physical Obstruction</button>
+  <button id="waterlogging">Waterlogging</button>
+  <button id="roadcracks">Road cracks</button>
+  <button id="others"  onclick="other()">Others(specify)</button>
+  <div class="otherdamage"></div>`;
+   }
+   function other()
+   {
+    document.querySelector('.otherdamage').innerHTML=`<textarea></textarea>`
+   }
+      
+
+  
+   /* const fileInput = document.getElementById('fileInput');
+    const previewArea = document.getElementById('previewArea');
+
+    fileInput.addEventListener('change', function () {
+      previewArea.innerHTML = ''; // Clear previous previews
+
+      const files = Array.from(fileInput.files);
+      files.forEach(file => {
+        const fileType = file.type;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const url = e.target.result;
+
+          if (fileType.startsWith('image/')) {
+            const img = document.createElement('img');
+            img.src = url;
+            previewArea.appendChild(img);
+          } else if (fileType.startsWith('video/')) {
+            const video = document.createElement('video');
+            video.src = url;
+            video.controls = true;
+            previewArea.appendChild(video);
+          }
+        };
+
+        reader.readAsDataURL(file);
+      });
+    });
+    }*/
+  </script>
+</body>
+</html>

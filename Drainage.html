@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drinage issue Reporting</title>
+  <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    padding: 30px;
+}
+
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+#issues2 {
+    margin-top: 15px;
+}
+
+button {
+    margin: 5px 10px 5px 0;
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #1e7e34;
+}
+
+  </style>
+</head>
+<body>
+
+
+
+  <h2>Problem Information</h2>
+ 
+  <label>Location of the drinage/street:</label>
+  <input id="drinagelocation" />
+
+  <h2>Issue with the road</h2>
+  <div id="issues2">
+  <button id="blockage">Blockage</button>
+  <button id="overflow">Overflow</button>
+  <button id="brokenmanhole">Broken Man-hole Cover</button>
+  <button id="foulsmell">Foul Smell</button>
+  <button class="others" onclick="other()">Others(specify)</button>
+  <label>Description:</label>
+  <textarea id="drainagedescription"></textarea>
+  
+</body>
+</html>
+
+
+  <script>
+   function other()
+   {
+    document.querySelector('.others').innerHTML=`<textarea></textarea>`
+   }
+      
+
+  
+  
+  </script>
+</body>
+</html>
